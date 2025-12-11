@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -9,6 +10,51 @@ import { useLanguage } from "@/components/ui/LanguageProvider";
 
 export const Contact = () => {
     const { dict } = useLanguage();
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+    });
+    const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string | null }>({
+        type: null,
+        message: null
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setStatus({ type: null, message: null });
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setStatus({ type: 'success', message: 'Email sent successfully!' });
+                setFormData({ name: "", email: "", subject: "", message: "" });
+            } else {
+                setStatus({ type: 'error', message: data.error || 'Failed to send email.' });
+            }
+        } catch (error) {
+            setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const contactInfo = [
         {
@@ -82,12 +128,16 @@ export const Contact = () => {
                         viewport={{ once: true }}
                     >
                         <GlassCard className="p-8">
-                            <form className="space-y-6">
+                            <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <label className="text-sm font-medium text-muted-foreground">{dict.contact.form.name}</label>
                                         <input
                                             type="text"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
                                             className="w-full px-4 py-3 rounded-lg bg-white/60 dark:bg-white/5 border border-black/5 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground placeholder:text-muted-foreground/50"
                                             placeholder="John Doe"
                                         />
@@ -96,6 +146,10 @@ export const Contact = () => {
                                         <label className="text-sm font-medium text-muted-foreground">{dict.contact.form.email}</label>
                                         <input
                                             type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
                                             className="w-full px-4 py-3 rounded-lg bg-white/60 dark:bg-white/5 border border-black/5 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground placeholder:text-muted-foreground/50"
                                             placeholder="john@example.com"
                                         />
@@ -106,6 +160,10 @@ export const Contact = () => {
                                     <label className="text-sm font-medium text-muted-foreground">{dict.contact.form.subject}</label>
                                     <input
                                         type="text"
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleChange}
+                                        required
                                         className="w-full px-4 py-3 rounded-lg bg-white/60 dark:bg-white/5 border border-black/5 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-foreground placeholder:text-muted-foreground/50"
                                         placeholder="Project Inquiry"
                                     />
@@ -114,14 +172,28 @@ export const Contact = () => {
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-muted-foreground">{dict.contact.form.message}</label>
                                     <textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
                                         rows={4}
                                         className="w-full px-4 py-3 rounded-lg bg-white/60 dark:bg-white/5 border border-black/5 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none text-foreground placeholder:text-muted-foreground/50"
                                         placeholder="Tell me about your project..."
                                     />
                                 </div>
 
-                                <MagneticButton className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-4 text-lg font-medium">
-                                    {dict.contact.form.send} <Send className="ml-2 w-5 h-5" />
+                                {status.message && (
+                                    <div className={`p-3 rounded-lg text-sm ${status.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
+                                        {status.message}
+                                    </div>
+                                )}
+
+                                <MagneticButton
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-4 text-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isSubmitting ? 'Sending...' : dict.contact.form.send} <Send className="ml-2 w-5 h-5" />
                                 </MagneticButton>
                             </form>
                         </GlassCard>

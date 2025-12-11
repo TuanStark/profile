@@ -12,16 +12,16 @@ export const Experience = () => {
     const experiences = [
         {
             role: "Junior Fullstack Developer",
-            company: "Tech Company Inc.",
-            location: "Ho Chi Minh City",
-            period: `2023 - ${dict.experience.present} `,
+            company: "CRBGROUP DIGITAL TECHNOLOGY JOINT STOCK COMPANY",
+            location: "Da Nang City",
+            period: `2024 - ${dict.experience.present} `,
             description: "Developing and maintaining web applications using React and NestJS. Collaborating with cross-functional teams to deliver high-quality software."
         },
         {
-            role: "Frontend Intern",
+            role: "Fullstack Developer Intern",
             company: "StartUp Lab",
             location: "Remote",
-            period: "2022 - 2023",
+            period: "2024",
             description: "Assisted in building responsive user interfaces. Learned best practices in React and state management."
         }
     ];
