@@ -28,8 +28,8 @@ export const Projects = () => {
             title: "Dorm Booking Platform",
             description: dict.projects.p3,
             tags: ["Next.js", "TypeScript", "Nestjs", "PostgreSQL", "Socket.io", "Redis", "Docker", "Tailwind CSS", "Google Maps", "K8S", "Microservices", "Docker", "K8s", "Terraform"],
-            links: { demo: "#", github: "#" },
-            image: "bg-gradient-to-br from-orange-500 to-red-500"
+            links: { demo: "#", github: "https://github.com/TuanStark/dorm-microservice-system" },
+            image: "/dorm.png"
         }
     ];
 

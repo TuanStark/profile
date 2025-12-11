@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "Lê Công Tuấn | Fullstack Developer",
   description: "Portfolio of Lê Công Tuấn, a Junior Fullstack Developer specializing in modern web technologies.",
   keywords: ["Next.js", "React", "TypeScript", "Fullstack", "Portfolio"],
+  icons: {
+    icon: "/logo-STA.png",
+    shortcut: "/logo-STA.png",
+    apple: "/logo-STA.png",
+  },
 };
 
 export default function RootLayout({
