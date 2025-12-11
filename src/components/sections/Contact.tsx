@@ -60,21 +60,21 @@ export const Contact = () => {
         {
             icon: <Mail className="w-6 h-6" />,
             label: dict.contact.email,
-            value: "contact@lecongtuan.dev",
-            href: "mailto:contact@lecongtuan.dev",
+            value: "lecongtuan472004@gmail.com",
+            href: "mailto:lecongtuan472004@gmail.com",
             color: "text-blue-500 dark:text-blue-400"
         },
         {
             icon: <Phone className="w-6 h-6" />,
             label: dict.contact.phone,
-            value: "+84 123 456 789",
-            href: "tel:+84123456789",
+            value: "+84 845 663 357",
+            href: "tel:+84845663357",
             color: "text-green-500 dark:text-green-400"
         },
         {
             icon: <MapPin className="w-6 h-6" />,
             label: dict.contact.location,
-            value: "Ho Chi Minh City, Vietnam",
+            value: "Da Nang City, Vietnam",
             href: "#",
             color: "text-purple-500 dark:text-purple-400"
         }

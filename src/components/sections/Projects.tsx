@@ -11,23 +11,23 @@ export const Projects = () => {
 
     const projects = [
         {
-            title: "E-Commerce Platform",
+            title: "Miniappify",
             description: dict.projects.p1,
-            tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
-            links: { demo: "#", github: "#" },
-            image: "bg-gradient-to-br from-purple-500 to-indigo-500"
+            tags: ["Next.js", "TypeScript", "Nestjs", "MongoDB", "Socket.io", "Zalo Miniapp", "Redis", "RabbitMQ", "Docker", "K8s", "Microservices"],
+            links: { demo: "https://miniappify.vn" },
+            image: "/miniappify.png"
         },
         {
-            title: "Task Management App",
+            title: "PhoBDS – Real Estate Platform (Da Nang)",
             description: dict.projects.p2,
-            tags: ["React", "Redux", "Node.js", "Socket.io"],
-            links: { demo: "#", github: "#" },
-            image: "bg-gradient-to-br from-emerald-500 to-teal-500"
+            tags: ["Next.js", "TypeScript", "Nestjs", "PostgreSQL", "Socket.io", "Redis", "Docker", "Tailwind CSS", "AI ChatBot"],
+            links: { demo: "https://bdsnhapho.net", github: "#" },
+            image: "/phobds.png"
         },
         {
-            title: "AI Content Generator",
+            title: "Dorm Booking Platform",
             description: dict.projects.p3,
-            tags: ["OpenAI API", "Next.js", "Tailwind CSS"],
+            tags: ["Next.js", "TypeScript", "Nestjs", "PostgreSQL", "Socket.io", "Redis", "Docker", "Tailwind CSS", "Google Maps", "K8S", "Microservices", "Docker", "K8s", "Terraform"],
             links: { demo: "#", github: "#" },
             image: "bg-gradient-to-br from-orange-500 to-red-500"
         }
@@ -50,7 +50,7 @@ export const Projects = () => {
                             <GlassCard className="h-full overflow-hidden group hover-effect p-0">
                                 {/* Project Image Placeholder */}
                                 <div className={`h-48 w-full ${project.image} relative overflow-hidden`}>
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
+                                    <img src={project.image} alt="" />
                                 </div>
 
                                 <div className="p-6">

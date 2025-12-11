@@ -11,8 +11,8 @@ export default function Home() {
     <main className="bg-background min-h-screen">
       <Hero />
       <About />
-      <Skills />
       <Projects />
+      <Skills />
       <Experience />
       <Contact />
       <Footer />

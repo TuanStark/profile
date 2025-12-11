@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionHeading } from "../ui/SectionHeading";
 import { GlassCard } from "../ui/GlassCard";
-import { Code2, Coffee, Laptop, User } from "lucide-react";
+import { Code2, Coffee, Laptop, User, Github, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "@/components/ui/LanguageProvider";
 
 export const About = () => {
@@ -80,6 +80,34 @@ export const About = () => {
                                     </div>
                                 </GlassCard>
                             ))}
+                        </div>
+
+                        <div className="mt-8 pt-8 border-t border-black/5 dark:border-white/5 flex items-center gap-4">
+                            <span className="text-muted-foreground font-medium">Connect with me:</span>
+                            <div className="flex gap-4">
+                                <a
+                                    href="https://github.com/TuanStark"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-primary/10 hover:text-primary transition-colors"
+                                >
+                                    <Github className="w-5 h-5" />
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/in/tuanstark"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-primary/10 hover:text-primary transition-colors"
+                                >
+                                    <Linkedin className="w-5 h-5" />
+                                </a>
+                                <a
+                                    href="mailto:lecongtuan472004@gmail.com"
+                                    className="p-2 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-primary/10 hover:text-primary transition-colors"
+                                >
+                                    <Mail className="w-5 h-5" />
+                                </a>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
