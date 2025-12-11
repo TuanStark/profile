@@ -34,7 +34,7 @@ export const About = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
                             {/* Placeholder for Profile Image */}
                             <div className="w-full h-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-muted-foreground">
-                                Profile Image Placeholder
+                                <img src="/avatar.png" alt="" className="w-full h-full object-contain" />
                             </div>
 
                             <div className="absolute bottom-6 left-6 z-20">

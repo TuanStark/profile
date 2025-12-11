@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import { MagneticButton } from "../ui/MagneticButton";
 import { useLanguage } from "@/components/ui/LanguageProvider";
+import Image from "next/image";
 
 export const Hero = () => {
     const { dict } = useLanguage();
@@ -70,17 +71,16 @@ export const Hero = () => {
 
                     <div className="flex flex-wrap gap-4">
                         <MagneticButton className="bg-primary text-primary-foreground hover:bg-primary/90">
-                            {dict.hero.viewProjects} <ArrowRight className="ml-2 h-4 w-4" />
+                            {dict.hero.viewProjects}
                         </MagneticButton>
-                        <MagneticButton className="border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-foreground">
-                            {dict.hero.downloadCV} <Download className="ml-2 h-4 w-4" />
+                        <MagneticButton className="border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-foreground whitespace-nowrap">
+                            {dict.hero.downloadCV}
                         </MagneticButton>
                     </div>
 
                     <div className="mt-12 flex items-center gap-6 text-muted-foreground">
-                        <a href="#" className="hover:text-primary transition-colors"><Github className="h-6 w-6" /></a>
-                        <a href="#" className="hover:text-primary transition-colors"><Linkedin className="h-6 w-6" /></a>
-                        <a href="#" className="hover:text-primary transition-colors"><Mail className="h-6 w-6" /></a>
+                        <a href="https://github.com/TuanStark" className="hover:text-primary transition-colors"><Github className="h-6 w-6" /></a>
+                        <a href="https://www.linkedin.com/in/tuanstark/" className="hover:text-primary transition-colors"><Linkedin className="h-6 w-6" /></a>
                     </div>
                 </motion.div>
 
@@ -96,36 +96,120 @@ export const Hero = () => {
                         <motion.div
                             animate={{ y: [0, -20, 0] }}
                             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute inset-0 bg-gradient-to-br from-white/60 to-white/30 dark:from-white/10 dark:to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 dark:border-white/10 p-6 shadow-2xl"
+                            className="absolute inset-0 bg-gradient-to-br from-white/60 to-white/30 dark:from-white/10 dark:to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col"
                         >
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="w-3 h-3 rounded-full bg-red-500" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                                <div className="w-3 h-3 rounded-full bg-green-500" />
-                            </div>
-                            <div className="space-y-3 font-mono text-sm">
-                                <div className="h-4 bg-black/5 dark:bg-white/10 rounded w-3/4" />
-                                <div className="h-4 bg-black/5 dark:bg-white/10 rounded w-1/2" />
-                                <div className="h-4 bg-black/5 dark:bg-white/10 rounded w-5/6" />
-                                <div className="h-4 bg-primary/20 rounded w-full mt-4" />
-                                <div className="h-4 bg-primary/20 rounded w-2/3" />
+                            {/* Window Header */}
+                            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/5">
+                                <div className="flex gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                                </div>
+                                <div className="ml-4 text-xs font-mono text-muted-foreground/50 flex gap-4">
+                                    <span>portfolio.tsx</span>
+                                    <span>style.css</span>
+                                </div>
                             </div>
 
-                            {/* Floating Elements */}
-                            <motion.div
-                                animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute -right-8 -top-8 p-4 bg-white/80 dark:bg-black/80 backdrop-blur-md rounded-xl border border-black/5 dark:border-white/10 shadow-xl"
-                            >
-                                <span className="text-blue-500 dark:text-blue-400 font-bold">React</span>
-                            </motion.div>
+                            <div className="flex flex-1 overflow-hidden">
+                                {/* Sidebar */}
+                                <div className="w-12 border-r border-white/10 bg-black/5 flex flex-col items-center py-4 gap-4">
+                                    <div className="w-6 h-6 rounded bg-white/10" />
+                                    <div className="w-6 h-6 rounded bg-white/10" />
+                                    <div className="w-6 h-6 rounded bg-white/10" />
+                                    <div className="flex-1" />
+                                    <div className="w-6 h-6 rounded bg-white/10" />
+                                </div>
+
+                                {/* Main Content */}
+                                <div className="flex-1 p-4 space-y-4 relative">
+                                    {/* Code Lines */}
+                                    <div className="space-y-2 font-mono text-xs opacity-70">
+                                        <div className="flex gap-2">
+                                            <span className="text-pink-500">const</span>
+                                            <span className="text-blue-400">Developer</span>
+                                            <span className="text-white">=</span>
+                                            <span className="text-yellow-300">{"{"}</span>
+                                        </div>
+                                        <div className="pl-4 flex gap-2">
+                                            <span className="text-blue-300">name:</span>
+                                            <span className="text-green-400">"Lê Công Tuấn"</span>,
+                                        </div>
+                                        <div className="pl-4 flex gap-2">
+                                            <span className="text-blue-300">role:</span>
+                                            <span className="text-green-400">"Full Stack"</span>,
+                                        </div>
+                                        <div className="pl-4 flex gap-2">
+                                            <span className="text-blue-300">experience:</span>
+                                            <span className="text-green-400">"1+ years"</span>,
+                                        </div>
+                                        <div className="pl-4 flex gap-2">
+                                            <span className="text-blue-300">projects:</span>
+                                            <span className="text-green-400">"10+"</span>,
+                                        </div>
+                                        <div className="pl-4 flex gap-2">
+                                            <span className="text-blue-300">clients:</span>
+                                            <span className="text-green-400">"5+"</span>,
+                                        </div>
+                                    </div>
+
+                                    {/* Images Grid */}
+
+
+                                    <div className="space-y-2 font-mono text-xs opacity-70">
+                                        <div className="text-yellow-300">{"}"}</div>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-3 mt-4">
+                                        <motion.div
+                                            whileHover={{ scale: 2.5, zIndex: 50, rotate: -5 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="relative aspect-video rounded-lg overflow-hidden border border-white/10 shadow-lg group cursor-pointer bg-background"
+                                        >
+                                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
+                                            <Image
+                                                src="/hero-image.png"
+                                                alt="Profile"
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </motion.div>
+                                        <motion.div
+                                            whileHover={{ scale: 2.5, zIndex: 50, rotate: 5 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="relative aspect-video rounded-lg overflow-hidden border border-white/10 shadow-lg group cursor-pointer bg-background"
+                                        >
+                                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
+                                            <Image
+                                                src="/github-images.png"
+                                                alt="Stats"
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </motion.div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Floating Badges */}
 
                             <motion.div
-                                animate={{ y: [0, -15, 0], x: [0, -10, 0] }}
-                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                                className="absolute -left-8 -bottom-8 p-4 bg-white/80 dark:bg-black/80 backdrop-blur-md rounded-xl border border-black/5 dark:border-white/10 shadow-xl"
+                                animate={{ y: [0, 10, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute bottom-4 right-4 flex gap-2"
                             >
-                                <span className="text-yellow-500 dark:text-yellow-400 font-bold">TypeScript</span>
+                                <div className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-xs font-mono text-blue-400">
+                                    React
+                                </div>
+                                <div className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-xs font-mono text-white">
+                                    Next.js
+                                </div>
+                                <div className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-xs font-mono text-cyan-400">
+                                    Tailwind CSS
+                                </div>
+                                <div className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-xs font-mono text-blue-500">
+                                    TypeScript
+                                </div>
                             </motion.div>
                         </motion.div>
                     </div>
